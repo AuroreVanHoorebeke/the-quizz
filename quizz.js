@@ -3,7 +3,7 @@ const main = document.createElement("main");
 main.className = "main";
 body.appendChild(main);
 
-const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple"
+const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple";
 const question = document.createElement("p");
 
 question.className = "class";
@@ -12,14 +12,18 @@ main.appendChild(question);
 let scoreDisplay = document.createElement("div");
 scoreDisplay.className = "scoreDisplay";
 
+const showScore = document.createElement("button");
+showScore.textContent = "Show Score";
+
 //requests for trivia data
 
 fetch(url)
-.then(response => response.json())
+.then(response => (response.json()))
 .then(array => {
     console.log(array);
     console.log(array.results);
     let score = 0;
+
     const arrayAPI = array.results;
     for(let i = 0; i < arrayAPI.length; i++){
         console.log("loop1");
@@ -86,8 +90,13 @@ fetch(url)
 
             console.log("dans loop2, hors evtlist -" + score)
 
-            main.appendChild(scoreDisplay)
+            showScore.addEventListener("click", function (){
+                main.appendChild(scoreDisplay)
+            });
+
         }
+
+    main.appendChild(showScore)
     }
 
 })
