@@ -15,6 +15,9 @@ showScore.textContent = "showScore";
 const refresh = document.createElement("button");
 refresh.textContent = "refresh";
 
+const buttonDiv = document.createElement("div");
+buttonDiv.className = "buttonDiv";
+
 //requests for trivia data
 
 fetch(url)
@@ -54,23 +57,26 @@ fetch(url)
         for(let answer of questionArr){
             console.log("loop2")
             console.log(i)
+            const inputLabelDiv = document.createElement("div");
+            inputLabelDiv.className = "inputLabelDiv";
+            answersDiv.appendChild(inputLabelDiv);
 
             const input = document.createElement("input");
             input.for = answer;
             input.className = "input"+i;
             input.type = "radio";
             input.name = "answers" + i;
-            answersDiv.appendChild(input)
+            inputLabelDiv.appendChild(input)
 
             const label = document.createElement("label");
             label.className = "label";
             label.id = answer;
             label.textContent = b64DecodeUnicode(answer);
-            answersDiv.appendChild(label);
+            inputLabelDiv.appendChild(label);
 
             input.addEventListener("change", function (){
                 console.log("click");
-                if(label.textContent == arrayAPI[i].correct_answer){
+                if(label.textContent == b64DecodeUnicode(arrayAPI[i].correct_answer)){
                     console.log("Ok!");
                     label.style.backgroundColor = "green";
                     score ++;
@@ -99,12 +105,13 @@ fetch(url)
             });
 
         }
-
-    main.appendChild(showScore);
-    main.appendChild(refresh);
+    main.appendChild(buttonDiv)
+    buttonDiv.appendChild(showScore);
+    buttonDiv.appendChild(refresh);
     }
 
 })
+
 
 /**
  * Function to address the character encoding issue in the trivia
