@@ -10,7 +10,10 @@ let scoreDisplay = document.createElement("div");
 scoreDisplay.className = "scoreDisplay";
 
 const showScore = document.createElement("button");
-showScore.textContent = "Show Score";
+showScore.textContent = "showScore";
+
+const refresh = document.createElement("button");
+refresh.textContent = "refresh";
 
 //requests for trivia data
 
@@ -91,10 +94,14 @@ fetch(url)
             showScore.addEventListener("click", function (){
                 main.appendChild(scoreDisplay)
             });
+            refresh.addEventListener("click", function (){
+                location.reload()
+            });
 
         }
 
-    main.appendChild(showScore)
+    main.appendChild(showScore);
+    main.appendChild(refresh);
     }
 
 })
