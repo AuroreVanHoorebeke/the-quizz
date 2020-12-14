@@ -1,3 +1,25 @@
-main{
-    background-color: grey;
-};
+/* body{
+    background-color: ;
+}; */
+h1{
+    font-family: 'Sansita Swashed', cursive;
+}
+.questionDiv{
+    background-color: #edf0f2;
+
+}
+.question{
+    background-color: #528398;
+    color: whitesmoke;
+    text-align: justify;
+    font-family: 'Open Sans', sans-serif;
+}
+.answersDiv{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+input{
+    /* display: flex; */
+    /* flex-direction: column; */
+
+}
