@@ -5,9 +5,12 @@ body.appendChild(main);
 
 const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple"
 const question = document.createElement("p");
-//question.id = "question";
+
 question.className = "class";
 main.appendChild(question);
+
+let scoreDisplay = document.createElement("div");
+scoreDisplay.className = "scoreDisplay";
 
 //requests for trivia data
 
@@ -16,8 +19,7 @@ fetch(url)
 .then(array => {
     console.log(array);
     console.log(array.results);
-
-    //for(let elem of arrayAPI.results)
+    let score = 0;
     const arrayAPI = array.results;
     for(let i = 0; i < arrayAPI.length; i++){
         console.log("loop1");
@@ -35,24 +37,6 @@ fetch(url)
         questionDiv.appendChild(answersDiv);
 
         const questionArr = arrayAPI[i].incorrect_answers;
-
-        // const incorrectAnsw = document.createElement("p");
-        // incorrectAnsw.className = "incorrectAnsw";
-        // incorrectAnsw.textContent = incorrectArr;
-        // answersDiv.appendChild(incorrectAnsw);
-
-
-        // const correct = document.createElement("label");
-        // correct.textContent = arrayAPI[i].correct_answer;
-        // correct.className = "correct"+i;
-        // correct.id = correct;
-
-        // const correctInput = document.createElement("input");
-        // correctInput.for = correct;
-        // correctInput.type = "radio";
-        // correctInput.name = "answers"+i;
-        // answersDiv.appendChild(correctInput)
-        //answersDiv.appendChild(correct);
 
         const correctAnsw = arrayAPI[i].correct_answer;
         questionArr.push(correctAnsw)
@@ -75,7 +59,34 @@ fetch(url)
             label.textContent = answer;
             answersDiv.appendChild(label);
 
+            input.addEventListener("change", function (){
+                console.log("click");
+                if(label.textContent == arrayAPI[i].correct_answer){
+                    console.log("Ok!");
+                    label.style.backgroundColor = "green";
+                    score ++;
+                    console.log(score)
+                }else{
+                    console.log("wrong!");
+                    label.style.backgroundColor = "red";
+                    alert("wrong answer!")
+                    score --;
+                    console.log(score);
+                };
+                console.log("dans loop2, dans evtlist dns fct-" + score)
 
+                scoreDisplay.textContent = `You have ${score} points.`
+
+            }
+                // const allInput = document.querySelectorAll("input")
+                // for(let radio of allInput){
+                // }
+
+            );
+
+            console.log("dans loop2, hors evtlist -" + score)
+
+            main.appendChild(scoreDisplay)
         }
     }
 
