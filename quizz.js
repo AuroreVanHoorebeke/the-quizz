@@ -40,55 +40,44 @@ fetch(url)
         // incorrectAnsw.className = "incorrectAnsw";
         // incorrectAnsw.textContent = incorrectArr;
         // answersDiv.appendChild(incorrectAnsw);
-        const correct = document.createElement("label");
-        correct.textContent = arrayAPI[i].correct_answer;
-        correct.className = "correct";
-        correct.id = correct;
 
-        const correctInput = document.createElement("input");
-        correctInput.for = correct;
-        correctInput.type = "radio";
-        correctInput.name = "answers"+i;
-        questionDiv.appendChild(correctInput)
 
-        questionDiv.appendChild(correct);
+        // const correct = document.createElement("label");
+        // correct.textContent = arrayAPI[i].correct_answer;
+        // correct.className = "correct"+i;
+        // correct.id = correct;
 
-        // questionArr.push(correctAnsw)
-        // console.log(questionArr);
+        // const correctInput = document.createElement("input");
+        // correctInput.for = correct;
+        // correctInput.type = "radio";
+        // correctInput.name = "answers"+i;
+        // answersDiv.appendChild(correctInput)
+        //answersDiv.appendChild(correct);
+
+        const correctAnsw = arrayAPI[i].correct_answer;
+        questionArr.push(correctAnsw)
+        console.log(questionArr);
 
         for(let answer of questionArr){
             console.log("loop2")
             console.log(i)
 
-            const wrongInput = document.createElement("input");
-            wrongInput.for = answer;
-            wrongInput.className = "wrongInput";
-            wrongInput.type = "radio";
-            wrongInput.name = "answers" + i;
-            questionDiv.appendChild(wrongInput)
+            const input = document.createElement("input");
+            input.for = answer;
+            input.className = "input"+i;
+            input.type = "radio";
+            input.name = "answers" + i;
+            answersDiv.appendChild(input)
 
-            const wrong = document.createElement("label");
-            wrong.className = "wrong";
-            wrong.id = answer;
-            wrong.textContent = answer;
-            questionDiv.appendChild(wrong);
+            const label = document.createElement("label");
+            label.className = "label";
+            label.id = answer;
+            label.textContent = answer;
+            answersDiv.appendChild(label);
+
 
         }
-
     }
 
 })
 
-document.querySelector("body > main > div:nth-child(4) > input[type=radio]:nth-child(9)")
-
-// body.addEventListener("checkboxClick", function (){
-//     if(document.querySelectorAll(".wrong").checked){
-//     console.log("wrong!");
-//     wrongInput.style.backgroundColor = "red";
-//     } else {
-//         if(document.querySelectorAll(".correct").checked){
-//             console.log("Ok!");
-//             wrongInput.style.backgroundColor = "green";
-//         };
-//     }
-// });
