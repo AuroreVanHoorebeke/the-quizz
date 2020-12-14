@@ -3,7 +3,7 @@ const main = document.createElement("main");
 main.className = "main";
 body.appendChild(main);
 
-const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple";
+const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple&encode=base64";
 const question = document.createElement("p");
 
 let scoreDisplay = document.createElement("div");
@@ -38,7 +38,7 @@ fetch(url)
 
         const question = document.createElement('p');
         question.className = "question";
-        question.textContent = arrayAPI[i].question;
+        question.textContent = b64DecodeUnicode(arrayAPI[i].question);
         questionDiv.appendChild(question);
 
         const answersDiv = document.createElement("div");
@@ -65,7 +65,7 @@ fetch(url)
             const label = document.createElement("label");
             label.className = "label";
             label.id = answer;
-            label.textContent = answer;
+            label.textContent = b64DecodeUnicode(answer);
             answersDiv.appendChild(label);
 
             input.addEventListener("change", function (){
@@ -106,3 +106,12 @@ fetch(url)
 
 })
 
+/**
+ * Function to address the character encoding issue in the trivia
+ */
+function b64DecodeUnicode(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+return decodeURIComponent(atob(str).split('').map(function(c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+}).join(''));
+}
