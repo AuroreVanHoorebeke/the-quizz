@@ -1,8 +1,20 @@
 /* body{
     background-color: ;
 }; */
+main{
+    max-width: 70%;
+    margin: auto;
+}
+
+@media screen and (min-width: 1000px){
+    main{
+        max-width: 40%;
+    }
+}
+
 h1{
     font-family: 'Sansita Swashed', cursive;
+    text-align: center;
 }
 .questionDiv{
     background-color: #edf0f2;
@@ -15,6 +27,7 @@ h1{
     font-family: 'Open Sans', sans-serif;
 }
 .answersDiv{
+    height: 50px;
     text-align: center;
     font-family: 'Roboto', sans-serif;
 }
@@ -22,4 +35,10 @@ input{
     /* display: flex; */
     /* flex-direction: column; */
 
+}
+
+.buttonDiv{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
 }
