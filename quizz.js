@@ -6,9 +6,6 @@ body.appendChild(main);
 const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple";
 const question = document.createElement("p");
 
-question.className = "class";
-main.appendChild(question);
-
 let scoreDisplay = document.createElement("div");
 scoreDisplay.className = "scoreDisplay";
 
@@ -25,6 +22,11 @@ fetch(url)
     let score = 0;
 
     const arrayAPI = array.results;
+
+    const title = document.createElement("h1");
+    title.textContent = `${arrayAPI[0].category} Trivia`;
+    main.appendChild(title);
+
     for(let i = 0; i < arrayAPI.length; i++){
         console.log("loop1");
         const questionDiv = document.createElement("div");
@@ -82,10 +84,6 @@ fetch(url)
                 scoreDisplay.textContent = `You have ${score} points.`
 
             }
-                // const allInput = document.querySelectorAll("input")
-                // for(let radio of allInput){
-                // }
-
             );
 
             console.log("dans loop2, hors evtlist -" + score)
