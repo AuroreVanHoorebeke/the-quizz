@@ -57,6 +57,24 @@ h1{
     justify-content: space-around;
 }
 
+button{
+    background-color: #2f0601;
+    color: whitesmoke;
+    border: 1px solid #2f0601;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    transition: 0.6s;
+    opacity: 1;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+button:active{
+    transform: scale(2, 0.5);
+}
 .scoreDisplay{
     background-color: #e5eafa;
     border-radius: 5px;

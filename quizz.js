@@ -10,10 +10,10 @@ let scoreDisplay = document.createElement("div");
 scoreDisplay.className = "scoreDisplay";
 
 const showScore = document.createElement("button");
-showScore.textContent = "showScore";
+showScore.textContent = "Show Score";
 
 const refresh = document.createElement("button");
-refresh.textContent = "refresh";
+refresh.textContent = "Refresh";
 
 const buttonDiv = document.createElement("div");
 buttonDiv.className = "buttonDiv";
@@ -89,7 +89,7 @@ fetch(url)
                 };
                 console.log("dans loop2, dans evtlist dns fct-" + score)
 
-                scoreDisplay.textContent = `You have ${score} points.`
+                scoreDisplay.textContent = `You have ${score} point(s).`
 
             }
             );
