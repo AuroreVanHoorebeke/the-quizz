@@ -1,5 +1,6 @@
 body{
-    background: linear-gradient(150deg, #fadd63 40%, #b87d4b 40%);;
+    background: linear-gradient(150deg, #fadd63 40%, #b87d4b 40%);
+    font-family: 'Roboto', sans-serif;
 }
 
 main{
@@ -41,7 +42,6 @@ h1{
     flex-direction: column; */
     /* justify-content: center; */
     /* text-align: center;*/
-    font-family: 'Roboto', sans-serif;
 }
 /* .inputLabelDiv{
     display: flex;
@@ -52,6 +52,14 @@ h1{
 
 .buttonDiv{
     margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-around;
+}
+
+.scoreDisplay{
+    background-color: #e5eafa;
+    border-radius: 5px;
+    padding: 10px;
+    min-height: 20px;
 }
