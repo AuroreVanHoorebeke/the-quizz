@@ -78,12 +78,10 @@ fetch(url)
                 console.log("click");
                 if(label.textContent == b64DecodeUnicode(arrayAPI[i].correct_answer)){
                     console.log("Ok!");
-                    label.style.backgroundColor = "green";
                     score ++;
                     console.log(score)
                 }else{
                     console.log("wrong!");
-                    label.style.backgroundColor = "red";
                     alert("wrong answer!")
                     score --;
                     console.log(score);
