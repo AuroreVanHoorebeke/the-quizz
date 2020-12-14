@@ -61,7 +61,7 @@ fetch(url)
             answersDiv.appendChild(inputLabelDiv);
 
             const input = document.createElement("input");
-            input.for = answer;
+            input.for = b64DecodeUnicode(answer);
             input.className = "input"+i;
             input.type = "radio";
             input.name = "answers" + i;
@@ -69,7 +69,7 @@ fetch(url)
 
             const label = document.createElement("label");
             label.className = "label";
-            label.id = answer;
+            label.id = b64DecodeUnicode(answer);
             label.textContent = b64DecodeUnicode(answer);
             inputLabelDiv.appendChild(label);
 
@@ -108,7 +108,7 @@ fetch(url)
 
 
 /**
- * Function to address the character encoding issue in the trivia
+ * @param {*} str Decodes a string from base64 to unicode.
  */
 function b64DecodeUnicode(str) {
     // Going backwards: from bytestream, to percent-encoding, to original string.
@@ -118,8 +118,8 @@ return decodeURIComponent(atob(str).split('').map(function(c) {
 }
 
 /**
- * Shuffles using Fisher-Yates algorythm.
-*/
+ * @param {*} arr Shuffles the given array using the Fisher-Yates' algorithm.
+ */
 function shuffle(arr){
     for(let i=arr.length-1; i>0; i--){
         let j = Math.floor(Math.random() * (i+1));
