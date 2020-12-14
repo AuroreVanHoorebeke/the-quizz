@@ -23,8 +23,7 @@ buttonDiv.className = "buttonDiv";
 fetch(url)
 .then(response => (response.json()))
 .then(array => {
-    console.log(array);
-    console.log(array.results);
+
     let score = 0;
 
     const arrayAPI = array.results;
@@ -34,7 +33,7 @@ fetch(url)
     main.appendChild(title);
 
     for(let i = 0; i < arrayAPI.length; i++){
-        console.log("loop1");
+
         const questionDiv = document.createElement("div");
         questionDiv.className = "questionDiv";
         main.appendChild(questionDiv);
@@ -52,12 +51,11 @@ fetch(url)
 
         const correctAnsw = arrayAPI[i].correct_answer;
         questionArr.push(correctAnsw)
-        console.log(questionArr);
+
         shuffle(questionArr);
 
         for(let answer of questionArr){
-            console.log("loop2")
-            console.log(i)
+
             const inputLabelDiv = document.createElement("div");
             inputLabelDiv.className = "inputLabelDiv";
             answersDiv.appendChild(inputLabelDiv);
@@ -76,31 +74,28 @@ fetch(url)
             inputLabelDiv.appendChild(label);
 
             input.addEventListener("change", function (){
-                console.log("click");
+
                 if(label.textContent == b64DecodeUnicode(arrayAPI[i].correct_answer)){
                     console.log("Ok!");
                     score ++;
                     console.log(score)
                 }else{
                     console.log("wrong!");
-                    alert("wrong answer!")
                     score --;
                     console.log(score);
                 };
-                console.log("dans loop2, dans evtlist dns fct-" + score)
 
                 scoreDisplay.textContent = `You have ${score} point(s).`
 
             }
             );
 
-            console.log("dans loop2, hors evtlist -" + score)
-
             showScore.addEventListener("click", function (){
                 main.appendChild(scoreDisplay)
             });
             refresh.addEventListener("click", function (){
-                location.reload()
+                location.reload();
+                main.removeChild(scoreDisplay);
             });
 
         }
