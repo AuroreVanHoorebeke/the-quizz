@@ -27,7 +27,7 @@ fetch(url)
     const arrayAPI = array.results;
 
     const title = document.createElement("h1");
-    title.textContent = `${arrayAPI[0].category} Trivia`;
+    title.textContent = `${b64DecodeUnicode(arrayAPI[0].category)} Trivia`;
     main.appendChild(title);
 
     for(let i = 0; i < arrayAPI.length; i++){
