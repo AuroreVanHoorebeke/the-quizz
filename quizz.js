@@ -53,6 +53,7 @@ fetch(url)
         const correctAnsw = arrayAPI[i].correct_answer;
         questionArr.push(correctAnsw)
         console.log(questionArr);
+        shuffle(questionArr);
 
         for(let answer of questionArr){
             console.log("loop2")
@@ -119,4 +120,14 @@ function b64DecodeUnicode(str) {
 return decodeURIComponent(atob(str).split('').map(function(c) {
     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
 }).join(''));
+}
+
+/**
+ * Shuffles using Fisher-Yates algorythm.
+*/
+function shuffle(arr){
+    for(let i=arr.length-1; i>0; i--){
+        let j = Math.floor(Math.random() * (i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
 }
